@@ -27,10 +27,16 @@ final class IspConfig
 
     public function __construct(
         Connector $connector,
+        private readonly string $host,
         private readonly string $username,
         private readonly string $password,
     ) {
         $this->connector = $connector;
+    }
+
+    public function getHost(): string
+    {
+        return $this->host;
     }
 
     /**
@@ -45,6 +51,7 @@ final class IspConfig
                 verifySsl: $config['verify_ssl'] ?? true,
                 timeout: $config['timeout'] ?? 30,
             ),
+            host: $config['host'],
             username: $config['username'],
             password: $config['password'],
         );

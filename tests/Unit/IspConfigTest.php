@@ -21,7 +21,7 @@ function createClient(?FakeConnector $fake = null): array
     $fake ??= new FakeConnector;
     $fake->stub('login', 'test-session-id');
 
-    $client = new IspConfig($fake, 'admin', 'secret');
+    $client = new IspConfig($fake, 'ispconfig.test', 'admin', 'secret');
 
     return [$client, $fake];
 }
@@ -51,7 +51,7 @@ it('throws AuthenticationException on login failure', function (): void {
     $fake = new FakeConnector;
     $fake->stub('login', '');
 
-    $client = new IspConfig($fake, 'admin', 'wrong');
+    $client = new IspConfig($fake, 'ispconfig.test', 'admin', 'wrong');
 
     $client->call('server_get_all');
 })->throws(AuthenticationException::class);

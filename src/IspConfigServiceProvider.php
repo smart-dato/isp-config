@@ -31,6 +31,7 @@ final class IspConfigServiceProvider extends PackageServiceProvider
                     verifySsl: $config['verify_ssl'],
                     timeout: $config['timeout'],
                 ),
+                host: $config['host'],
                 username: $config['username'],
                 password: $config['password'],
             );

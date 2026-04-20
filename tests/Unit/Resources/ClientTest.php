@@ -10,7 +10,7 @@ function clientSetup(): array
     $fake = new FakeConnector;
     $fake->stub('login', 'session-id');
 
-    $client = new IspConfig($fake, 'admin', 'secret');
+    $client = new IspConfig($fake, 'ispconfig.test', 'admin', 'secret');
 
     return [$client->client(), $fake];
 }
